@@ -1,0 +1,30 @@
+version: '3.8'
+services:
+  web:
+    build: .
+    container_name: dechat-web
+    ports:
+      - "3010:3000"
+    environment:
+      - NEXT_PUBLIC_SIGNAL_MULTIADDR=/ip4/127.0.0.1/tcp/9091/wss/p2p-webrtc-star
+      - NEXT_PUBLIC_DEFAULT_ROOM=dechat-global
+      - NEXT_PUBLIC_ICE_SERVERS=[{"urls":["stun:127.0.0.1:3478"]},{"urls":["turn:127.0.0.1:3478"],"username":"user","credential":"pass"}]
+    depends_on:
+      - signaling
+      - coturn
+
+  signaling:
+    image: node:20-alpine
+    container_name: dechat-signal
+    command: ["sh", "-lc", "npx -y --package @libp2p/webrtc-star-signalling-server webrtc-star --port 9090 --host 0.0.0.0"]
+    ports:
+      - "9091:9090"
+
+  coturn:
+    image: coturn/coturn:latest
+    platform: linux/arm64/v8
+    container_name: dechat-coturn
+    command: ["turnserver","-a","-f","-v","-r","dechat","-u","user:pass","-p","3478","-L","0.0.0.0","--no-dtls","--no-tls"]
+    ports:
+      - "3478:3478/tcp"
+      - "3478:3478/udp"

@@ -1,0 +1,51 @@
+# Node.js dependencies
+node_modules/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Dependency directories
+jspm_packages/
+
+# Next.js build output
+.next/
+
+# Production
+build/
+
+# Miscellaneous
+.DS_Store
+*.pem
+*.env
+.env.*
+
+# Firebase related
+firebase-debug.log
+.firebaserc
+firebase.json
+
+# Temporary files
+*.tmp
+*.swp
+
+# Docker
+*.pid
+docker-compose.override.yml
+
+# IDE specific
+.idea/
+.vscode/
+*.sublime-workspace
+*.sublime-project
+
+# macOS specific
+.AppleDouble
+.LSOverride
+
+# Thumbnails
+._*
