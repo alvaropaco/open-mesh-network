@@ -6,7 +6,7 @@ services:
     ports:
       - "3010:3000"
     environment:
-      - NEXT_PUBLIC_SIGNAL_MULTIADDR=/ip4/127.0.0.1/tcp/9091/wss/p2p-webrtc-star
+      - NEXT_PUBLIC_SIGNAL_MULTIADDR=/ip4/127.0.0.1/tcp/9091/ws/p2p-webrtc-star
       - NEXT_PUBLIC_DEFAULT_ROOM=meshed-global
       - NEXT_PUBLIC_ICE_SERVERS=[{"urls":["stun:127.0.0.1:3478"]},{"urls":["turn:127.0.0.1:3478"],"username":"user","credential":"pass"}]
     depends_on:
