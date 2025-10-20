@@ -1,15 +1,15 @@
 "use client"
 
 import { useEffect, useRef, useState } from 'react'
-import { initNode, subscribe, publish, disconnect, type DechatNode } from '@/lib/libp2p'
+import { initNode, subscribe, publish, disconnect, type meshedNode } from '@/lib/libp2p'
 
 export default function SelfTest() {
   const [running, setRunning] = useState(false)
   const [result, setResult] = useState<string>('')
   const [status, setStatus] = useState<string>('')
-  const nodeARef = useRef<DechatNode | null>(null)
-  const nodeBRef = useRef<DechatNode | null>(null)
-  const topic = 'dechat-selftest'
+  const nodeARef = useRef<meshedNode | null>(null)
+  const nodeBRef = useRef<meshedNode | null>(null)
+  const topic = 'meshed-selftest'
 
   useEffect(() => () => {
     if (nodeARef.current) disconnect(nodeARef.current)

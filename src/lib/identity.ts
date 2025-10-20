@@ -1,7 +1,7 @@
 import nacl from 'tweetnacl'
 
-const LS_KEY = 'dechat:id'
-const LS_CONTACTS = 'dechat:contacts'
+const LS_KEY = 'meshed:id'
+const LS_CONTACTS = 'meshed:contacts'
 
 export type Identity = { publicKey: Uint8Array; secretKey: Uint8Array }
 export type Contacts = Record<string, string> // fp -> pkB64

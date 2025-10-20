@@ -6,7 +6,7 @@ import { gossipsub } from '@chainsafe/libp2p-gossipsub'
 import { identify } from '@libp2p/identify'
 import { multiaddr } from '@multiformats/multiaddr'
 
-export type DechatNode = Libp2p<{ pubsub: any }>
+export type meshedNode = Libp2p<{ pubsub: any }>
 
 const SIGNAL_MULTIADDR =
   process.env.NEXT_PUBLIC_SIGNAL_MULTIADDR || '/dns4/localhost/tcp/9091/ws/p2p-webrtc-star'
@@ -20,7 +20,7 @@ try {
   console.warn('ICE servers inválidos; usando defaults do browser', e)
 }
 
-export async function initNode(): Promise<DechatNode> {
+export async function initNode(): Promise<meshedNode> {
   const wrtcStar = webRTCStar()
 
   // Compat: libp2p v3 espera `listenFilter`; webrtc-star v7 expõe `filter`.
@@ -93,10 +93,10 @@ export async function initNode(): Promise<DechatNode> {
     console.log('[libp2p] peer:disconnect', (evt as any).detail?.toString?.())
   })
 
-  return node as DechatNode
+  return node as meshedNode
 }
 
-export async function subscribe(node: DechatNode, topic: string, onMessage: (data: Uint8Array) => void) {
+export async function subscribe(node: meshedNode, topic: string, onMessage: (data: Uint8Array) => void) {
   node.services.pubsub.subscribe(topic)
   node.services.pubsub.addEventListener('message', (evt: any) => {
     const detail = evt.detail || {}
@@ -108,10 +108,10 @@ export async function subscribe(node: DechatNode, topic: string, onMessage: (dat
   })
 }
 
-export async function publish(node: DechatNode, topic: string, data: Uint8Array) {
+export async function publish(node: meshedNode, topic: string, data: Uint8Array) {
   await node.services.pubsub.publish(topic, data)
 }
 
-export async function disconnect(node: DechatNode) {
+export async function disconnect(node: meshedNode) {
   await node.stop()
 }

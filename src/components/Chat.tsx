@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { initNode, subscribe, publish, disconnect, type DechatNode } from '@/lib/libp2p'
+import { initNode, subscribe, publish, disconnect, type meshedNode } from '@/lib/libp2p'
 import {
   getOrCreateIdentity,
   encryptDM,
@@ -32,7 +32,7 @@ import {
   listPending,
 } from '@/lib/group'
 
-const DEFAULT_ROOM = process.env.NEXT_PUBLIC_DEFAULT_ROOM || 'dechat-global'
+const DEFAULT_ROOM = process.env.NEXT_PUBLIC_DEFAULT_ROOM || 'meshed-global'
 
 type LogItem = { ts: number; from: string; text: string; kind: 'room' | 'dm' | 'sys' }
 
@@ -51,7 +51,7 @@ export default function Chat() {
   const [pending, setPending] = useState<JoinAction[]>([])
   const [keyId, setKeyId] = useState<string>('')
 
-  const nodeRef = useRef<DechatNode | null>(null)
+  const nodeRef = useRef<meshedNode | null>(null)
   const [id, setId] = useState<Identity | null>(null)
   useEffect(() => { setId(getOrCreateIdentity()) }, [])
   const myFp = useMemo(() => (id ? fingerprint(id.publicKey) : ''), [id?.publicKey])
@@ -314,7 +314,7 @@ export default function Chat() {
     const url = URL.createObjectURL(blob)
     const a = document.createElement('a')
     a.href = url
-    a.download = `dechat-backup-${new Date().toISOString().slice(0,19)}.json`
+    a.download = `meshed-backup-${new Date().toISOString().slice(0,19)}.json`
     a.click()
     URL.revokeObjectURL(url)
   }

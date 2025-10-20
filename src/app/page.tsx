@@ -19,7 +19,7 @@ export default function Page() {
         boxShadow: '0 10px 30px rgba(0,0,0,0.25)',
         border: '1px solid rgba(255,255,255,0.08)'
       }}>
-        <h1 style={{ color: 'white', margin: 0 }}>DeChat P2P</h1>
+        <h1 style={{ color: 'white', margin: 0 }}>meshed P2P</h1>
         <p style={{ color: '#93c5fd', marginTop: 8 }}>
           Troque mensagens diretamente entre navegadores, sem servidor central.
         </p>

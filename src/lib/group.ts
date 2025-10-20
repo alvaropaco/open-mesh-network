@@ -1,10 +1,10 @@
 import nacl from 'tweetnacl'
 import { b64ToU8, u8ToB64 } from '@/lib/identity'
 
-const LS_ROOM_KEY = (room: string) => `dechat:room:${room}:key`
-const LS_ROOM_KEYID = (room: string) => `dechat:room:${room}:keyid`
-const LS_ROOM_MEMBERS = (room: string) => `dechat:room:${room}:members`
-const LS_ROOM_PENDING = (room: string) => `dechat:room:${room}:pending`
+const LS_ROOM_KEY = (room: string) => `meshed:room:${room}:key`
+const LS_ROOM_KEYID = (room: string) => `meshed:room:${room}:keyid`
+const LS_ROOM_MEMBERS = (room: string) => `meshed:room:${room}:members`
+const LS_ROOM_PENDING = (room: string) => `meshed:room:${room}:pending`
 
 export type RoomKeyInfo = { keyB64: string; keyId: string }
 

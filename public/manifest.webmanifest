@@ -1,6 +1,6 @@
 {
-  "name": "DeChat P2P",
-  "short_name": "DeChat",
+  "name": "meshed P2P",
+  "short_name": "meshed",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#0b0f19",

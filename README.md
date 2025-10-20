@@ -1,4 +1,4 @@
-# DeChat P2P — Next.js PWA + libp2p WebRTC + Docker
+# meshed P2P — Next.js PWA + libp2p WebRTC + Docker
 
 Mensageria **descentralizada P2P** (browser-to-browser) com **libp2p** + **WebRTC**, suporte a:
 - **DMs E2E** (ECDH X25519 + secretbox)

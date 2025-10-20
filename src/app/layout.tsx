@@ -1,5 +1,5 @@
 export const metadata = {
-  title: 'DeChat P2P',
+  title: 'meshed P2P',
   description: 'Mensagens P2P com libp2p + WebRTC',
 }
 
