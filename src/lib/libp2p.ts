@@ -51,10 +51,11 @@ export async function initNode(): Promise<meshedNode> {
             })
 
             const onlyMa = maArr.filter((a: any) => typeof a?.protoCodes === 'function')
-            const res = typeof t.filter === 'function' ? t.filter(onlyMa) : onlyMa
-            console.debug('[libp2p] listenFilter input:', onlyMa.map((a: any) => a?.toString?.() ?? a))
-            console.debug('[libp2p] listenFilter output:', res.map((a: any) => a?.toString?.() ?? a))
-            return res
+            // A implementação do filtro do webrtc-star v7 parece rejeitar endereços /wss.
+            // Para contornar isso, retornamos a lista de endereços diretamente,
+            // confiando que o endereço do sinalizador fornecido é válido.
+            console.debug('[libp2p] listenFilter bypass. Input:', onlyMa.map((a: any) => a?.toString?.() ?? a))
+            return onlyMa
           } catch (e) {
             console.warn('[libp2p] listenFilter compat fallback error', e)
             return []
